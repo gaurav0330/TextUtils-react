@@ -1,82 +1,62 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function About() {
-    const [darkMode, setDarkMode] = useState(false);
-
-    // Toggle Dark Mode
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-    };
-
-    // Dynamic styles for dark and light modes
+export default function About(props) {
     let myStyle = {
-        color: darkMode ? 'white' : 'black',
-        backgroundColor: darkMode ? '#333' : 'white',
-        transition: 'all 0.5s ease'
-    };
-
-    let accordionStyle = {
-        backgroundColor: darkMode ? '#444' : '#f8f9fa',
-        color: darkMode ? 'white' : 'black',
-        borderRadius: '5px',
-        transition: 'all 0.5s ease'
+        color: props.mode === 'dark' ? 'white' : '#042743',
+        backgroundColor: props.mode === 'dark' ? '#042743' : 'white',
     };
 
     return (
-        <>
-            <div className="container" style={myStyle}>
-                <div className="container my-5">
-                    <h3 className="text-center mb-4" style={{ fontWeight: 'bold', color: darkMode ? '#66fcf1' : '#007bff' }}>
-                        About Us
-                    </h3>
-                    <div className="accordion" id="accordionExample">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header">
-                                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    About Our Mission
-                                </button>
-                            </h2>
-                            <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                <div className="accordion-body" style={accordionStyle}>
-                                    <strong>We are driven by innovation and a desire to create meaningful solutions.</strong> Our mission is to provide the best services and products that help improve your daily life, combining cutting-edge technology with user-friendly experiences. Our team is dedicated to bringing the most up-to-date and practical applications to the market.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="accordion-item">
-                            <h2 className="accordion-header">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Our Vision
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div className="accordion-body" style={accordionStyle}>
-                                    <strong>Innovation, efficiency, and integrity are at the heart of what we do.</strong> Our vision is to be recognized globally for pioneering new technologies, maintaining a culture of continuous learning, and delivering excellence in all our projects. We are committed to exceeding expectations.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="accordion-item">
-                            <h2 className="accordion-header">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Our Core Values
-                                </button>
-                            </h2>
-                            <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div className="accordion-body" style={accordionStyle}>
-                                    <strong>We stand by our core values of integrity, innovation, and inclusiveness.</strong> These values shape our work culture and drive the success of our organization. Our commitment to these principles ensures that we deliver exceptional quality and foster a positive work environment.
-                                </div>
-                            </div>
+        <div className="container" style={{color: props.mode === 'dark' ? 'white' : '#042743'}}>
+            <h1 className="my-3">About Us</h1>
+            <div className="accordion" id="accordionExample">
+                <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingOne">
+                        <button className="accordion-button" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What is TextUtils?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div className="accordion-body" style={myStyle}>
+                            <strong>TextUtils</strong> is a simple and powerful tool for quick text transformations. 
+                            Whether you want to convert text to uppercase, lowercase, or count the number of words or characters, TextUtils provides an easy and efficient way to manage your text.
                         </div>
                     </div>
+                </div>
 
-                    <div className="container my-3">
-                        <button type="button" className="btn btn-primary" onClick={toggleDarkMode}>
-                            {darkMode ? 'Disable Dark Mode' : 'Enable Dark Mode'}
+                <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingTwo">
+                        <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Key Features
                         </button>
+                    </h2>
+                    <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div className="accordion-body" style={myStyle}>
+                            <ul>
+                                <li>Convert text to Uppercase</li>
+                                <li>Convert text to Lowercase</li>
+                                <li>Count words and characters</li>
+                                <li>Remove extra spaces</li>
+                                <li>Copy text to clipboard</li>
+                            </ul>
+                            These features make editing and analyzing your text fast and straightforward.
+                        </div>
+                    </div>
+                </div>
+
+                <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingThree">
+                        <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Why Use TextUtils?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div className="accordion-body" style={myStyle}>
+                            <strong>TextUtils</strong> is ideal for anyone looking to quickly format or analyze text. Whether you're a student, developer, or content creator, our tool saves time by offering essential text manipulation options in one place. It's a must-have for anyone who deals with large amounts of text data regularly.
+                        </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
