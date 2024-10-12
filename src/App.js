@@ -21,7 +21,6 @@ function App() {
     }, 2000);
   };
 
-
   const toggleMode = () => {
     if (mode === "light") {
       setMode('dark');
@@ -33,14 +32,14 @@ function App() {
       showAlert("Light Mode has been Enabled", "success");
     }
   }
-
   return (
     <Router>
       <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} setAlert={setAlert} />
       <div className="container my-3">
         <Routes>
-          <Route exact path="/" element={<TextForm heading="Enter the Text to Analyze" mode={mode} showAlert={showAlert} />} />
+          {/* use exact other wise it do the partial matching with the Router */}
+          <Route exact path="/" element={<TextForm heading="Chracter, Word Counter " mode={mode} showAlert={showAlert} />} />
           <Route exact path="/about" element={<About mode={mode} />} />
         </Routes>
       </div>
